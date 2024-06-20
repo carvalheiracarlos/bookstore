@@ -1,2 +1,2 @@
-# bookstore
-Simple Book Store App
+# Book Store App in Django
+...
