@@ -37,6 +37,7 @@ class BookCategoryViewSet(CreateModelMixin,
         'list': [IsAuthenticated],
         'retrieve': [IsAuthenticated],
     }
+
 class BookAuthorViewSet(CreateModelMixin,
                         RetrieveModelMixin,
                         ListModelMixin,
