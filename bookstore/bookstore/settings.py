@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # App Models
     'authentication',
     'customers',
+    'books',
 
     # Third Party Apps
     'drf_yasg',

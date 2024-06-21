@@ -1,6 +1,6 @@
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, ListModelMixin
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.permissions import IsAdminUser, IsAuthenticated, AllowAny
 
 from books.models import Book, BookCategory, BookAuthor
 from books.serializers import BookSerializer, BookCategorySerializer, BookAuthorSerializer
@@ -41,10 +41,11 @@ class BookCategoryViewSet(CreateModelMixin,
 class BookAuthorViewSet(CreateModelMixin,
                         RetrieveModelMixin,
                         ListModelMixin,
+                        PermissionsByActionMixin,
                         GenericViewSet):
 
-    queryset = BookCategory.objects.all()
-    serializer_class = BookCategorySerializer
+    queryset = BookAuthor.objects.all()
+    serializer_class = BookAuthorSerializer 
     permission_classes_by_action = {
         'create': [IsAdminUser],
         'list': [IsAuthenticated],

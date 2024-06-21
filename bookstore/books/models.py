@@ -12,7 +12,6 @@ class BookCategory(BaseModel):
     class Meta:
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
-        ordering = ('-created',)
 
     def __str__(self):
         return self.name
@@ -23,7 +22,6 @@ class BookAuthor(BaseModel):
     class Meta:
         verbose_name = 'Autor'
         verbose_name_plural = 'Autores'
-        ordering = ('-created',)
 
     def __str__(self):
         return self.name
