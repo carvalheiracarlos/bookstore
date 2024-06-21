@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'drf_yasg',
+
+    'authentication',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +141,5 @@ SWAGGER_SETTINGS = {
         }
     }
 }
+
+AUTH_USER_MODEL = 'authentication.AuthUser'
