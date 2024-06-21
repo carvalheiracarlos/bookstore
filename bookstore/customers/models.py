@@ -14,6 +14,7 @@ class Customer(BaseModel):
     phone = models.CharField('contato', max_length=20, blank=False, null=False, validators=[validate_phone])
     cpf = models.CharField('CPF', max_length=14, validators=[validate_cpf], unique=True)
 
+
     class Meta:
         verbose_name_plural = 'Customer'
         verbose_name = 'Customers'
