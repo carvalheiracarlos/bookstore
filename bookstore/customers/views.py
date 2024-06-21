@@ -28,20 +28,12 @@ class CustomerViewSet(CreateModelMixin,
     serializer_class = CustomerSerializer
     permission_classes_by_action = {
         'create': [AllowAny],
-        'me': [IsAuthenticated],
-        'list': [IsAdminUser],
-        'retrieve': [IsAdminUser]
+        'list': [IsAuthenticated],
+        'retrieve': [IsAuthenticated]
     }
 
     def get_queryset(self):
-        if self.request.user.is_staff:
+        if self.request.user.is_superuser:
             return Customer.objects.all()
 
-        return Customer.objects.filter(user__id=self.request.user)
-
-    @swagger_auto_schema(operation_description='Detail current user information')
-    @action(detail=False, methods=['get'], name='my-profile')
-    def me(self, request):
-        instance = get_object_or_404(Customer, user__id=request.user.id)
-        serializer = self.get_serializer(instance)
-        return Response(serializer.data)
+        return Customer.objects.filter(user__id=self.request.user.id)
