@@ -44,9 +44,11 @@ INSTALLED_APPS = [
 
     # App Models
     'authentication',
+    'customers',
 
     # Third Party Apps
     'drf_yasg',
+    'rest_framework',
 
 ]
 

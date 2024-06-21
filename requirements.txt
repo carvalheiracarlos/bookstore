@@ -1,5 +1,7 @@
 asgiref==3.8.1
 Django==4.2.13
+django-behaviors==0.5.1
+django-lifecycle==1.2.4
 djangorestframework==3.15.2
 drf-yasg==1.21.7
 inflection==0.5.1
