@@ -42,9 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # App Models
+    'authentication',
+
+    # Third Party Apps
     'drf_yasg',
 
-    'authentication',
 ]
 
 MIDDLEWARE = [
