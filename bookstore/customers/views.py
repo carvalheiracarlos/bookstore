@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from rest_framework.mixins import CreateModelMixin, ListModelMixin, RetrieveModelMixin
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from drf_yasg.utils import swagger_auto_schema
@@ -27,6 +27,7 @@ class CustomerViewSet(CreateModelMixin,
     pagination_class = None
     serializer_class = CustomerSerializer
     permission_classes_by_action = {
+        'create': [AllowAny],
         'me': [IsAuthenticated],
         'list': [IsAdminUser],
         'retrieve': [IsAdminUser]
