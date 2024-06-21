@@ -22,5 +22,5 @@ class CustomerSerializer(serializers.ModelSerializer):
         ]
     
     def create(self, validated_data):
-        user = User.objects.create(**validated_data.pop('user'))
+        user = User.objects.create_user(**validated_data.pop('user'))
         return Customer.objects.create(user=user, **validated_data)
