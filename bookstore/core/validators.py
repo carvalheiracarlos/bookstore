@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 from django.core.exceptions import ValidationError
 
 from core.utils import is_cpf_valid
@@ -24,3 +25,10 @@ def validate_cpf(value):
 def validate_phone(value):
     if not re.match("(\(?\d{2}\)?\s)?(\d{4,5}\-?\d{4})", value):
         raise ValidationError("Número de Telefone inválido", "invalid")
+
+def year_validator(value):
+    if value < 1900 or value > datetime.datetime.now().year:
+        raise ValidationError(
+            _('%(value)s Ano inválido !'),
+            params={'value': value},
+        )
