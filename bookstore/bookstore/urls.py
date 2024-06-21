@@ -30,4 +30,5 @@ urlpatterns = [
     path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path("customers/", include("customers.urls", namespace="customers")),
+    path("books/", include("books.urls", namespace="books")),
 ]
