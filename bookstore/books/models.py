@@ -36,7 +36,6 @@ class Book(BaseModel):
     class Meta:
         verbose_name = 'Livro'
         verbose_name_plural = 'Livros'
-        ordering = ('-created',)
 
     def __str__(self):
         return self.title

@@ -1,3 +1,5 @@
+from django_filters import rest_framework as filters
+
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, ListModelMixin
 from rest_framework.permissions import IsAdminUser, IsAuthenticated, AllowAny
@@ -16,13 +18,17 @@ class BookViewSet(CreateModelMixin,
 
     queryset = Book.objects.all()
     serializer_class = BookSerializer 
-    filter_class = BookFilter 
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = BookFilter
     permission_classes_by_action = {
         'create': [IsAdminUser],
         'destory': [IsAdminUser],
         'list': [IsAuthenticated],
         'retrieve': [IsAuthenticated],
     }
+
+    def get_queryset(self):
+        return Book.objects.all()
 
 class BookCategoryViewSet(CreateModelMixin,
                           RetrieveModelMixin,

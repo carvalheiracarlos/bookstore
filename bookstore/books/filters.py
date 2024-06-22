@@ -1,4 +1,3 @@
-import django_filters 
 from django_filters import rest_framework as filters
 
 from books.models import Book
@@ -9,7 +8,7 @@ class BookFilter(filters.FilterSet):
     release_year = filters.NumberFilter(field_name='release_year')
     author = filters.CharFilter(field_name='book___author_name', lookup_expr='icontains')
     category = filters.CharFilter(field_name='book___category_name', lookup_expr='icontains')
-    order_by = django_filters.CharFilter(method='get_order_by', label='order_by')
+    order_by = filters.CharFilter(method='get_order_by', label='order_by')
 
     class Meta:
         model = Book
@@ -17,7 +16,8 @@ class BookFilter(filters.FilterSet):
             'title',
             'release_year',
             'author',
-            'category'
+            'category',
+            'order_by'
         ]
 
     def get_order_by(self, queryset, name, value):

@@ -1,4 +1,3 @@
-from django_filters.rest_framework import DjangoFilterBackend
 from django.contrib.auth import get_user_model
 from rest_framework.mixins import CreateModelMixin, ListModelMixin, RetrieveModelMixin
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -18,8 +17,6 @@ class CustomerViewSet(CreateModelMixin,
                       GenericViewSet):
 
     queryset = Customer.objects.all()
-    filter_backends = [DjangoFilterBackend]
-    pagination_class = None
     serializer_class = CustomerSerializer
     permission_classes_by_action = {
         'create': [AllowAny],
