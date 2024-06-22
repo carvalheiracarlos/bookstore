@@ -27,8 +27,5 @@ def validate_phone(value):
         raise ValidationError("Número de Telefone inválido", "invalid")
 
 def year_validator(value):
-    if value < 1900 or value > datetime.datetime.now().year:
-        raise ValidationError(
-            _('%(value)s Ano inválido !'),
-            params={'value': value},
-        )
+    if value < 0 or value > datetime.now().year:
+        raise ValidationError(f"{value} Ano inválido", "invalid")
