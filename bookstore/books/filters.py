@@ -6,8 +6,8 @@ from books.models import Book
 class BookFilter(filters.FilterSet):
     title = filters.CharFilter(field_name='title', lookup_expr='icontains')
     release_year = filters.NumberFilter(field_name='release_year')
-    author = filters.CharFilter(field_name='book___author_name', lookup_expr='icontains')
-    category = filters.CharFilter(field_name='book___category_name', lookup_expr='icontains')
+    author = filters.CharFilter(field_name='author__name', lookup_expr='icontains')
+    category = filters.CharFilter(field_name='category__name', lookup_expr='icontains')
     order_by = filters.CharFilter(method='get_order_by', label='order_by')
 
     class Meta:
