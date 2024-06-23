@@ -2,13 +2,14 @@ from django_filters import rest_framework as filters
 
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, ListModelMixin
-from rest_framework.permissions import IsAdminUser, IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
 from books.models import Book, BookCategory, BookAuthor
 from books.serializers import BookSerializer, BookCategorySerializer, BookAuthorSerializer
 from books.filters import BookFilter
 from core.mixins import PermissionsByActionMixin
 
+#ToDO: Update
 class BookViewSet(CreateModelMixin,
                   RetrieveModelMixin,
                   DestroyModelMixin,
@@ -26,9 +27,6 @@ class BookViewSet(CreateModelMixin,
         'list': [IsAuthenticated],
         'retrieve': [IsAuthenticated],
     }
-
-    def get_queryset(self):
-        return Book.objects.all()
 
 class BookCategoryViewSet(CreateModelMixin,
                           RetrieveModelMixin,

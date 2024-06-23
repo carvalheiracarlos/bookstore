@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'authentication',
     'customers',
     'books',
+    'checkout',
 
     # Third Party Apps
     'drf_yasg',
