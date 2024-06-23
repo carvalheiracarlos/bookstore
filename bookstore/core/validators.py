@@ -29,3 +29,7 @@ def validate_phone(value):
 def year_validator(value):
     if value < 0 or value > datetime.now().year:
         raise ValidationError(f"{value} Ano inválido", "invalid")
+
+def validate_book_quantity(value):
+    if value < 0 or not isinstance(value, int):
+        raise ValidationError(f"{value} Quantidade inválida (Precisa ser Inteiro Positivo)", "invalid")
