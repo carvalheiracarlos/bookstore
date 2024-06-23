@@ -16,7 +16,7 @@ class OrderFilter(filters.FilterSet):
         fields = [
             'customer_name',
             'customer_cpf',
-            'release_year'
+            'release_year',
             'author',
             'category',
             'order_by'
