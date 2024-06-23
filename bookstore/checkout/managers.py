@@ -26,4 +26,4 @@ class OrderManager(models.Manager):
         if request_user.is_superuser:
             return Order.objects.all()
 
-        return Order.objects.filter(budget__cart__user_id=request_user.id)
+        return Order.objects.filter(customer__user_id=request_user.id)

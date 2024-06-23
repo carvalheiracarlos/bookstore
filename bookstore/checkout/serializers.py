@@ -17,9 +17,11 @@ class OrderSerializer(serializers.ModelSerializer):
         ]
 
     def to_representation(self, instance):
+        self.fields['created'] = serializers.DateTimeField()
+        self.fields['modified'] = serializers.DateTimeField()
         self.fields['customer'] = CustomerSerializer()
         self.fields['book'] = BookSerializer()
-        self.fields['status' ]= serializers.CharField(source='get_status_display')
+        self.fields['status' ] = serializers.CharField(source='get_status_display')
         return super(OrderSerializer, self).to_representation(instance)
 
     def create(self, validated_data):
