@@ -2,9 +2,7 @@ from django.db import models
 from django.shortcuts import get_object_or_404
 
 
-
 class OrderManager(models.Manager):
-    #Todo Exceptions
     def create(self, **obj_data):
         from books.models import Book
         from checkout.models import Order

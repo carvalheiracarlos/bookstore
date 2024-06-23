@@ -7,6 +7,7 @@ from customers.serializers import CustomerSerializer
 from books.serializers import BookSerializer
 
 class OrderSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Order 
         fields = [
