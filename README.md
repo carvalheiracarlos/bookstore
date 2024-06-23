@@ -24,6 +24,7 @@
 - `grant all privileges on database bookstore to bookstore_user;`
 
 ### Run Project
+- dotenv on `./bookstore/.env`
 #### on project root `bookstore/bookstore`
 - `python manage.py migrate`
 - `python manage.py createsuperuser`
@@ -39,6 +40,7 @@
 - http://127.0.0.1:8000/swagger/
 #### Insomnia
 - https://insomnia.rest/download
+- Exported Endpoints Located at `./bookstore_endpoints.json`
 
   
 ---
