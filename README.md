@@ -1,6 +1,6 @@
 # Book Store App in Django
 
-## How To Run-
+## How To Run
 ### Basic Requirements
 - python3.9
 - pip 23.0.1
@@ -38,12 +38,13 @@
 #### Swagger
 - http://127.0.0.1:8000/swagger/
 #### Insomnia
-... in progress json
+- https://insomnia.rest/download
 
   
 ---
 
 #### Actions
+- Create Customer
 - Create, Read, Update, Delete Books.
 - Create Orders.
 - Orders to be accepted must match stock quantities with selected books.
