@@ -25,14 +25,14 @@
 
 ### Run Project
 #### on project root `bookstore/bookstore`
-- python manage.py migrate
-- python manage.py createsuperuser
-- python manage.py runserver
+- `python manage.py migrate`
+- `python manage.py createsuperuser`
+- `python manage.py runserver`
 
 ### Test 
 #### on project root `bookstore/bookstore`
-- python manage.py migrate (only if not migrated before)
-- python manage.py test
+- `python manage.py migrate` (only if not migrated before)
+- `python manage.py test`
 
 ### Endpoints
 #### Swagger
