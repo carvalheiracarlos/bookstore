@@ -9,15 +9,15 @@ from core.validators import validate_phone, validate_cpf
 User = get_user_model()
 
 class Customer(BaseModel):
-    user = models.OneToOneField(User, verbose_name='usuário', on_delete=models.CASCADE)
-    name = models.CharField('nome', max_length=255)
-    phone = models.CharField('contato', max_length=20, blank=False, null=False, validators=[validate_phone])
+    user = models.OneToOneField(User, verbose_name='Usuário', on_delete=models.CASCADE)
+    name = models.CharField('Nome', max_length=255)
+    phone = models.CharField('Contato', max_length=20, blank=False, null=False, validators=[validate_phone])
     cpf = models.CharField('CPF', max_length=14, validators=[validate_cpf], unique=True)
 
 
     class Meta:
-        verbose_name_plural = 'Customer'
-        verbose_name = 'Customers'
+        verbose_name_plural = 'Consumidores'
+        verbose_name = 'Consumidor'
         ordering = ('-created',)
 
     def __str__(self):

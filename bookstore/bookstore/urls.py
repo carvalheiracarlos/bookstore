@@ -31,4 +31,5 @@ urlpatterns = [
     path('auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path("customers/", include("customers.urls", namespace="customers")),
     path("books/", include("books.urls", namespace="books")),
+    path("checkout/", include("checkout.urls", namespace="checkout")),
 ]
