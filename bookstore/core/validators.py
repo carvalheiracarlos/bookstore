@@ -10,7 +10,6 @@ def dv_maker(v):
         return 11 - v
     return 0
 
-
 def validate_cpf(value):
     if not value or len(value) == 0:
         raise ValidationError("CPF é obrigatório.", "invalid")
@@ -20,7 +19,6 @@ def validate_cpf(value):
 
     elif not is_cpf_valid(str(value)):
         raise ValidationError("CPF inválido", "invalid")
-
 
 def validate_phone(value):
     if not re.match("(\(?\d{2}\)?\s)?(\d{4,5}\-?\d{4})", value):
