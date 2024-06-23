@@ -23,4 +23,4 @@ class Order(BaseModel):
         verbose_name_plural = 'Pedidos'
 
     def __str__(self):
-        return f'{self.customer.name} | {self.book.name}' 
+        return f'{self.customer.name} | {self.book.title}' 
