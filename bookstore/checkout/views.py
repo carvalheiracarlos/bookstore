@@ -10,6 +10,8 @@ class OrderViewSet(CreateModelMixin,
                    ListModelMixin,
                    GenericViewSet):
 
-    queryset = Order.objects.all()
     serializer_class = OrderSerializer 
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Order.objects.my_orders(self.request.user)

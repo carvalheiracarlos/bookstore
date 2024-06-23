@@ -4,6 +4,7 @@ from django.core.validators import MinValueValidator
 from customers.models import Customer
 from books.models import Book
 from core.models import BaseModel
+from checkout.managers import OrderManager
 
 class Order(BaseModel):
     class Status(models.IntegerChoices):
@@ -14,6 +15,8 @@ class Order(BaseModel):
     book = models.ForeignKey(Book, verbose_name='Livro do Pedido', on_delete=models.CASCADE)
     quantity = models.PositiveSmallIntegerField('Quantidade de Livros', validators=[MinValueValidator(0)])
     status = models.PositiveSmallIntegerField(choices=Status.choices, default=Status.REJECTED.value)
+
+    objects = OrderManager()
 
     class Meta:
         verbose_name = 'Pedido'
