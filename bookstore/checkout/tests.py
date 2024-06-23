@@ -40,3 +40,15 @@ class OrderAPITestCase(APITestCase):
         response = self.client.post(self.url, self.order_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED, response.json())
         self.assertEqual(response.json()['status'], self.status.REJECTED.label)
+
+    def test_list_order(self):
+        self.client.force_login(user=self.user, backend=None)
+        response = self.client.get(self.url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK, response.json())
+
+    def test_retrieve_order(self):
+        order = baker.make('checkout.order', customer=self.customer)
+        url_detail = reverse('checkout:OrderViewSet-detail', args=[order.pk])
+        self.client.force_login(user=self.user, backend=None)
+        response = self.client.get(url_detail, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK, response.json())

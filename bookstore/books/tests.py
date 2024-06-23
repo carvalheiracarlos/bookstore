@@ -6,6 +6,8 @@ from model_bakery import baker
 from datetime import datetime
 
 User = get_user_model()
+RELEASE_YEAR = 1992
+DEFAULT_BOOK_QUANTITY = 10
 
 class BookAPITestCase(APITestCase):
     def setUp(self):
@@ -16,8 +18,8 @@ class BookAPITestCase(APITestCase):
 
         self.book_data = {
             'title': 'random_book',
-            'release_year': 2001,
-            'quantity': '2',
+            'release_year': RELEASE_YEAR,
+            'quantity': DEFAULT_BOOK_QUANTITY,
             'author': self.author.id,
             'category': self.category.id,
         }
@@ -51,6 +53,24 @@ class BookAPITestCase(APITestCase):
         self.client.force_login(user=self.user, backend=None)
         response = self.client.get(url_detail, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK, response.json())
+
+    def test_update_book(self):
+        book = baker.make('books.Book', quantity=DEFAULT_BOOK_QUANTITY)
+        update_data = {
+            'quantity': DEFAULT_BOOK_QUANTITY + 1
+        }
+        url_detail = reverse('books:BookViewSet-detail', args=[book.pk])
+        self.client.force_login(user=self.admin_user, backend=None)
+        response = self.client.patch(url_detail, update_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK, response.json())
+        self.assertEqual(response.json()['quantity'], DEFAULT_BOOK_QUANTITY + 1)
+
+    def test_delete_book(self):
+        book = baker.make('books.Book')
+        url_detail = reverse('books:BookViewSet-detail', args=[book.pk])
+        self.client.force_login(user=self.admin_user, backend=None)
+        response = self.client.delete(url_detail, format='json')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
 class BookCategoryAPITestCase(APITestCase):
     def setUp(self):
