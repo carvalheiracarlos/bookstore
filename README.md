@@ -38,7 +38,7 @@
 
 ### Endpoints
 #### Swagger
-- http://127.0.0.1:8000/swagger/
+- http://127.0.0.1:8000/
 #### Insomnia
 - https://insomnia.rest/download
 - Exported Endpoints Located at `./bookstore_endpoints.json`
