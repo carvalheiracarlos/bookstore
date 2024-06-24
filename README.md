@@ -24,6 +24,7 @@
 - `grant all privileges on database bookstore to bookstore_user;`
 
 ### Run Project
+- Just for simplicity, provided
 - dotenv on `./bookstore/.env`
 #### on project root `bookstore/bookstore`
 - `python manage.py migrate`
